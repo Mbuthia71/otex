@@ -54,6 +54,12 @@ export function SiteHeader() {
             Login
           </a>
           <a
+            href="https://console.otexads.com/signup?type=publisher"
+            className="hidden md:inline-flex text-[13px] font-medium px-3.5 py-1.5 rounded-full border border-border text-foreground/80 hover:text-foreground hover:border-foreground/40 transition"
+          >
+            Monetize
+          </a>
+          <a
             href="https://console.otexads.com/signup?type=advertiser"
             className="inline-flex items-center gap-1 text-[13px] font-medium px-3.5 py-1.5 rounded-full bg-foreground text-background hover:opacity-90 transition"
           >
@@ -72,8 +78,7 @@ export function SiteFooter() {
         <div className="grid md:grid-cols-4 gap-10 text-sm">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2">
-              <LogoMark className="h-7 w-7" />
-              <span className="font-black tracking-tight text-base">OtexAds</span>
+              <LogoMark className="h-7" />
             </Link>
             <p className="mt-4 text-foreground/55 max-w-xs leading-relaxed">
               Self-serve ad network for African advertisers and publishers. Billed in shillings, paid via M-Pesa. A Siohioma Group company.

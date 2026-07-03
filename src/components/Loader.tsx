@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LogoMark } from "./Logo";
+import { LogoFull } from "./Logo";
 
 export function Loader() {
   const [gone, setGone] = useState(false);
@@ -20,14 +20,11 @@ export function Loader() {
       <div className="relative flex items-center justify-center">
         <span className="absolute h-40 w-40 rounded-full bg-[var(--sun)]/30 blur-3xl loader-pulse" />
         <span className="absolute h-28 w-28 rounded-full border border-[var(--sun)]/40 loader-ring" />
-        <LogoMark className="relative h-24 w-24 md:h-28 md:w-28 float-slow drop-shadow-[0_8px_30px_rgba(0,0,0,0.12)]" />
+        <LogoFull className="relative h-14 md:h-16 float-slow drop-shadow-[0_8px_30px_rgba(0,0,0,0.12)]" />
       </div>
       <div className="mt-10 text-center">
-        <div className="text-3xl md:text-4xl font-black tracking-[-0.04em]">
-          Savannah<span className="text-[var(--herb)]">.</span>Cloud
-        </div>
-        <div className="mt-3 text-[11px] uppercase tracking-[0.32em] text-foreground/45">
-          One stack · Built in Africa
+        <div className="text-[11px] uppercase tracking-[0.32em] text-foreground/45">
+          Self-serve ad network · Billed in shillings
         </div>
       </div>
       <style>{`
