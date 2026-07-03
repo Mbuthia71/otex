@@ -6,66 +6,58 @@ export const Route = createFileRoute("/pricing")({
   component: PricingPage,
   head: () => ({
     meta: [
-      { title: "Pricing — Savannah Cloud" },
-      { name: "description", content: "Starter at KES 3,000/mo. Pro at KES 9,000/mo. Scale for teams. Priced in shillings — no FX tax." },
-      { property: "og:title", content: "Pricing — Savannah Cloud" },
-      { property: "og:description", content: "Simple. Honest. Priced in KES." },
+      { title: "Pricing — OtexAds" },
+      { name: "description", content: "No minimum spend for advertisers. Weekly M-Pesa payouts for publishers from KES 500. Priced in shillings — no FX tax." },
+      { property: "og:title", content: "Pricing — OtexAds" },
+      { property: "og:description", content: "CPM-based advertising, revenue share for publishers, M-Pesa settlement." },
+      { property: "og:url", content: "/pricing" },
     ],
-    links: [{ rel: "canonical", href: "https://savannahcloud.com/pricing/" }],
+    links: [{ rel: "canonical", href: "/pricing" }],
   }),
 });
 
-const tiers = [
+const advertiserTiers = [
   {
-    name: "Starter",
-    price: "KES 3,000",
-    suffix: "/ month",
-    desc: "For solo builders shipping real things.",
+    name: "Self-serve",
+    price: "No minimum",
+    suffix: "· CPM / CPC bidding",
+    desc: "Launch a campaign the same day. Top up any amount.",
     features: [
-      "1 project · custom domain (bring your own)",
-      "50 GB Baobab storage",
-      "2 Mto databases (5 GB each)",
-      "1M Simba requests / mo",
-      "100k Pipelines runs / mo",
-      "10k Twiga emails / mo",
-      "1k Tamtam messages / mo",
-      "Safari maps: 25k loads / mo",
+      "All 5 ad formats — Push, Native, Popunder, In-Page Push, Banner",
+      "Real-time stats & budget pacing",
+      "Country, device, browser & category targeting",
+      "M-Pesa, card & bank top-up",
+      "Campaign review within 24 hours",
     ],
-    cta: "Start with Starter",
-    highlight: false,
-  },
-  {
-    name: "Pro",
-    price: "KES 9,000",
-    suffix: "/ month",
-    desc: "For teams shipping at scale.",
-    features: [
-      "Unlimited projects + custom domains",
-      "Free .africa or .co.ke domain for the first year",
-      "500 GB Baobab storage",
-      "20 Mto databases (20 GB each)",
-      "10M Simba requests / mo",
-      "2M Pipelines runs / mo",
-      "100k Twiga emails · 10k Tamtam messages",
-      "Safari maps: 250k loads / mo",
-      "Team of 10",
-    ],
-    cta: "Go Pro",
+    cta: "Start advertising",
+    href: "https://console.otexads.com/signup?type=advertiser",
     highlight: true,
   },
   {
-    name: "Scale",
-    price: "Custom",
-    desc: "For teams with weight to throw.",
+    name: "Managed",
+    price: "From KES 250k",
+    suffix: "/ month spend",
+    desc: "For agencies and brands with a dedicated media budget.",
     features: [
-      "Volume pricing across every primitive",
-      "Dedicated infra + 99.99% SLA",
-      "SSO, audit logs, RBAC",
-      "Priority support · named engineer",
+      "Named account manager",
+      "Creative & landing-page review",
+      "Custom whitelists & audience packages",
+      "Priority campaign approval",
+      "Consolidated monthly invoice",
     ],
-    cta: "Talk to us",
+    cta: "Talk to sales",
+    href: "https://console.otexads.com/support",
     highlight: false,
   },
+];
+
+const publisherTerms = [
+  { name: "Payout method", value: "M-Pesa · Bank transfer" },
+  { name: "Payout frequency", value: "Weekly · Every Friday" },
+  { name: "Minimum threshold", value: "KES 500" },
+  { name: "Revenue share", value: "Up to 80% of net ad revenue" },
+  { name: "Onboarding fee", value: "None" },
+  { name: "Withdrawal fee", value: "None on M-Pesa" },
 ];
 
 function PricingPage() {
@@ -74,11 +66,15 @@ function PricingPage() {
       <PageHeader
         eyebrow="Pricing"
         title={<>Simple. <span className="font-serif-italic">Honest.</span> In shillings.</>}
-        lede="No per-seat traps. No FX surprises. One bill, in KES, for every primitive on the platform."
+        lede="No per-seat traps. No FX surprises. Advertisers pay per impression or click. Publishers get paid weekly, in M-Pesa."
       />
-      <section className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="grid md:grid-cols-3 gap-5">
-          {tiers.map((t) => (
+
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-6 text-center">
+          For Advertisers
+        </div>
+        <div className="grid md:grid-cols-2 gap-5">
+          {advertiserTiers.map((t) => (
             <div
               key={t.name}
               className={`relative rounded-2xl border p-8 ${
@@ -87,12 +83,12 @@ function PricingPage() {
             >
               {t.highlight && (
                 <div className="absolute -top-2.5 left-8 text-[10px] tracking-[0.25em] uppercase bg-foreground text-background px-2.5 py-1 rounded-full">
-                  Recommended
+                  Most popular
                 </div>
               )}
               <div className="text-sm text-foreground/55">{t.name}</div>
-              <div className="mt-4 flex items-baseline gap-1.5">
-                <span className="text-4xl font-black tracking-tight">{t.price}</span>
+              <div className="mt-4 flex items-baseline gap-2 flex-wrap">
+                <span className="text-3xl font-black tracking-tight">{t.price}</span>
                 {t.suffix && <span className="text-sm text-foreground/55">{t.suffix}</span>}
               </div>
               <p className="mt-2 text-sm text-foreground/60">{t.desc}</p>
@@ -105,7 +101,7 @@ function PricingPage() {
                 ))}
               </ul>
               <a
-                href="https://console.savannahcloud.com"
+                href={t.href}
                 className={`mt-8 inline-flex w-full items-center justify-center px-4 py-2.5 rounded-full font-bold text-sm transition ${
                   t.highlight
                     ? "bg-foreground text-background hover:opacity-90"
@@ -116,6 +112,34 @@ function PricingPage() {
               </a>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-6 text-center">
+          For Publishers
+        </div>
+        <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+          <h2 className="text-2xl md:text-3xl font-black tracking-[-0.035em]">
+            Get paid <span className="font-serif-italic font-normal">weekly.</span> Straight to M-Pesa.
+          </h2>
+          <p className="mt-3 text-foreground/65 max-w-xl">
+            Publishers keep up to 80% of net ad revenue on their zones. No onboarding fee, no withdrawal fee on M-Pesa, no net-30 wait.
+          </p>
+          <dl className="mt-8 grid sm:grid-cols-2 gap-x-10 gap-y-4 text-sm">
+            {publisherTerms.map((row) => (
+              <div key={row.name} className="flex items-baseline justify-between gap-4 border-b border-border/60 pb-3">
+                <dt className="text-foreground/55">{row.name}</dt>
+                <dd className="font-semibold text-right">{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <a
+            href="https://console.otexads.com/signup?type=publisher"
+            className="mt-8 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-bold text-sm hover:opacity-90 transition"
+          >
+            Monetize your site
+          </a>
         </div>
         <p className="mt-10 text-center text-xs text-foreground/45">
           Prices in Kenyan Shillings. Pay by M-Pesa, card, or bank transfer. VAT included where applicable.

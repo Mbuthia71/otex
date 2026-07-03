@@ -1,10 +1,9 @@
-# Savannah Cloud — open to all crawlers, including AI search engines.
-# We want to be cited by AI Overviews, ChatGPT, Claude, Perplexity, Gemini, etc.
+# OtexAds — open to all crawlers, including AI search engines.
 
 User-agent: *
 Allow: /
 
-# Google AI training + AI Overviews (separate from regular Googlebot)
+# Google AI training + AI Overviews
 User-agent: Google-Extended
 Allow: /
 
@@ -45,6 +44,3 @@ User-agent: DuckAssistBot
 Allow: /
 User-agent: MistralAI-User
 Allow: /
-
-Sitemap: https://savannahcloud.com/sitemap.xml
-Sitemap: https://savannahcloud.com/image-sitemap.xml

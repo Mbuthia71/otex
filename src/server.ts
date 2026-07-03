@@ -116,7 +116,8 @@ export default {
         }
 
         // Enforce trailing slashes for known top-level routes
-        const needsSlash = new Set(["/platform", "/pipelines", "/pricing", "/why"]);
+        // Enforce trailing slashes for known top-level routes
+        const needsSlash = new Set(["/pricing"]);
         if (needsSlash.has(url.pathname)) {
           url.pathname = `${url.pathname}/`;
           return applySecurityHeaders(Response.redirect(url.toString(), 308));
