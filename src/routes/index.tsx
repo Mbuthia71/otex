@@ -1,39 +1,27 @@
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useMemo } from "react";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { ArrowRight, ArrowUpRight, Bell, LayoutGrid, MousePointerClick, Rows3, Square, Check } from "lucide-react";
+import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Loader } from "@/components/Loader";
 import { TypewriterText } from "@/components/TypewriterText";
-import cloudHero from "@/assets/cloud-hero.jpg";
-import posterRunLife from "@/assets/poster-run-your-life.jpg";
-import posterChaosStability from "@/assets/poster-chaos-stability.png";
-import baobabIcon from "@/assets/icons/baobab.png.asset.json";
-import mtoIcon from "@/assets/icons/mto.png.asset.json";
-import simbaIcon from "@/assets/icons/simba.png.asset.json";
-import tamtamIcon from "@/assets/icons/tamtam.png.asset.json";
-import safariIcon from "@/assets/icons/safari.png.asset.json";
-import twigaIcon from "@/assets/icons/twiga.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Savannah Cloud — Everything your stack needs, in one place" },
-      { name: "description", content: "Pipelines, deployments, domains, email. One cloud platform built for developers. Ship faster. Pay less. Own more." },
+      { title: "OtexAds — Self-Serve Ad Network | Push, Native & Popunder Ads" },
+      { name: "description", content: "Advertise or monetize with OtexAds. 5 ad formats, real-time stats, M-Pesa payouts. Built for African publishers and advertisers." },
       { name: "theme-color", content: "#F4F1EA" },
-      { property: "og:title", content: "Savannah Cloud" },
-      { property: "og:description", content: "Everything your stack needs, in one place." },
+      { property: "og:title", content: "OtexAds — Self-Serve Ad Network" },
+      { property: "og:description", content: "5 ad formats, real-time stats, M-Pesa payouts. Built for African publishers and advertisers." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://savannahcloud.com/" },
+      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
-      { rel: "canonical", href: "https://savannahcloud.com/" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" },
+      { rel: "canonical", href: "/" },
     ],
     scripts: [
       {
@@ -41,68 +29,21 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: "Savannah Cloud",
-          applicationCategory: "DeveloperApplication",
+          name: "OtexAds",
+          applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
-          description: "All-in-one African cloud platform: compute, storage, databases, email, SMS, WhatsApp, and maps under one roof, billed in local currency.",
-          offers: { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free tier available" },
-          publisher: { "@type": "Organization", name: "Savannah Cloud" },
+          description: "Self-serve ad network connecting advertisers with publisher traffic across Africa. Push, native, popunder, in-page push, and banner ads. M-Pesa billing and payouts.",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "KES", description: "No minimum spend for advertisers" },
+          publisher: { "@type": "Organization", name: "OtexAds" },
           featureList: [
-            "S3-compatible object storage (Baobab)",
-            "Serverless SQL database with branching (Mto)",
-            "Edge compute functions (Simba)",
-            "SMS and WhatsApp messaging API (Tamtam)",
-            "Maps, geocoding, directions (Safari)",
-            "Transactional and marketing email (Twiga)",
-          ],
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "What is Savannah Cloud?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Savannah Cloud is an African-built cloud platform that bundles compute, storage, databases, email, SMS, WhatsApp, and maps into a single account, billed in local African currencies. It is a single-vendor alternative to stitching together AWS, SendGrid, Twilio, and Mapbox.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What services does Savannah Cloud offer?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Six core services: Baobab (S3-compatible object storage), Mto (serverless SQL with branching), Simba (edge compute), Tamtam (SMS and WhatsApp API), Safari (maps and geocoding), and Twiga (transactional email).",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How is Savannah Cloud different from AWS or Vercel?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Savannah Cloud is built in Africa for African latency and pricing. You get one invoice in local currency, support for Paystack and M-Pesa, and every primitive (compute, data, messaging, maps) in one console instead of seven separate vendors.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How much does Savannah Cloud cost?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Plans start at KES 3,000/month for Starter and KES 9,000/month for Pro, with custom Scale pricing for larger teams. Billing is in Kenyan shillings via M-Pesa, card, or Paystack inside console.savannahcloud.com.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Where do I sign up and manage billing?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Signup, projects, billing and payment methods all live at console.savannahcloud.com. The savannahcloud.com site is for product information and pricing.",
-              },
-            },
+            "Push ads",
+            "Native ads",
+            "Popunder ads",
+            "In-Page Push ads",
+            "Banner ads",
+            "M-Pesa billing and payouts",
+            "Real-time campaign stats",
+            "Weekly publisher payouts",
           ],
         }),
       },
@@ -115,117 +56,21 @@ function Index() {
     <SiteLayout>
       <Loader />
       <Hero />
-      <Glance />
-      <Posters />
-      <FAQ />
+      <StatsBar />
+      <Sides />
+      <HowItWorks />
+      <Formats />
       <ClosingCTA />
     </SiteLayout>
   );
 }
 
-function Posters() {
-  return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
-      <div className="text-center mb-12">
-        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-4">Built for Africa</div>
-        <h2 className="text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black tracking-[-0.035em]">
-          Infrastructure that <span className="font-serif-italic font-normal">moves with you.</span>
-        </h2>
-      </div>
-      <div className="grid md:grid-cols-2 gap-5">
-        <figure className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-border/70 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]">
-          <img
-            src={posterRunLife}
-            alt="Run your life. We handle the rest. — Savannah Cloud poster of a couple running past an acacia tree at sunset"
-            className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-          />
-        </figure>
-        <figure className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-border/70 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]">
-          <img
-            src={posterChaosStability}
-            alt="Chaos above. Stability below. — Savannah Cloud poster of palm trees bending in a desert windstorm"
-            className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-          />
-        </figure>
-      </div>
-    </section>
-  );
-}
-
-function FAQ() {
-  const qa = [
-    {
-      q: "What is Savannah Cloud?",
-      a: "Savannah Cloud is an African-built cloud platform that bundles compute, storage, databases, email, SMS, WhatsApp and maps into a single account — billed in local currency. It replaces stitching together AWS, SendGrid, Twilio and Mapbox with one console and one invoice.",
-    },
-    {
-      q: "What services does Savannah Cloud offer?",
-      a: "Six core primitives: Baobab (S3-compatible object storage), Mto (serverless SQL with branching), Simba (edge compute), Tamtam (SMS and WhatsApp API), Safari (maps and geocoding) and Twiga (transactional email).",
-    },
-    {
-      q: "How is Savannah Cloud different from AWS, Vercel or Supabase?",
-      a: "We are built in Africa, for African latency and pricing. You pay in shillings — not dollars — get support for Paystack and M-Pesa, and every primitive lives in one console instead of being split across five vendors.",
-    },
-    {
-      q: "How much does Savannah Cloud cost?",
-      a: "Starter is KES 3,000/month and Pro is KES 9,000/month. Scale pricing is custom for larger teams. Pay by M-Pesa, card or Paystack — all in shillings, no FX surprises.",
-    },
-    {
-      q: "Where do I sign up and manage billing?",
-      a: "All signup, project management, billing and payment methods live at console.savannahcloud.com. This site is for product information and pricing.",
-    },
-    {
-      q: "Who is behind Savannah Cloud?",
-      a: "Savannah Cloud is a Siohioma Group company, built and operated from Africa and shipped to the world.",
-    },
-  ];
-  return (
-    <section id="faq" className="mx-auto max-w-3xl px-6 py-24" itemScope itemType="https://schema.org/FAQPage">
-      <div className="text-center mb-12">
-        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-4">FAQ</div>
-        <h2 className="text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black tracking-[-0.035em]">
-          The <span className="font-serif-italic font-normal">honest</span> answers.
-        </h2>
-      </div>
-      <dl className="divide-y divide-border/60 border-y border-border/60">
-        {qa.map((item) => (
-          <div
-            key={item.q}
-            className="py-6"
-            itemScope
-            itemProp="mainEntity"
-            itemType="https://schema.org/Question"
-          >
-            <dt
-              className="text-lg font-semibold tracking-tight text-foreground"
-              itemProp="name"
-            >
-              {item.q}
-            </dt>
-            <dd
-              className="mt-3 text-foreground/70 leading-relaxed"
-              itemScope
-              itemProp="acceptedAnswer"
-              itemType="https://schema.org/Answer"
-            >
-              <span itemProp="text">{item.a}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-  );
-}
-
-
 function Hero() {
   const router = useRouter();
   const segments = useMemo(
     () => [
-      { text: "Everything your stack needs," },
-      { text: " in one place.", className: "font-serif-italic font-normal text-foreground/90" },
+      { text: "Traffic that converts," },
+      { text: " revenue that scales.", className: "font-serif-italic font-normal text-foreground/90" },
     ],
     []
   );
@@ -234,10 +79,10 @@ function Hero() {
     <section className="relative">
       <div className="mx-auto max-w-7xl px-6 pt-10 md:pt-14">
         <h2 className="text-center md:text-left text-[clamp(1.5rem,3vw,2.5rem)] font-black tracking-[-0.055em] leading-[0.9]">
-          Savannah Cloud
+          OtexAds
         </h2>
       </div>
-      <div className="mx-auto max-w-7xl px-6 pt-10 md:pt-14 pb-20 md:pb-28">
+      <div className="mx-auto max-w-7xl px-6 pt-10 md:pt-14 pb-16 md:pb-24">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div className="fade-up">
             <h1 className="text-balance text-[clamp(2.75rem,6vw,5rem)] font-black tracking-[-0.045em] leading-[0.98]">
@@ -247,78 +92,272 @@ function Hero() {
                 speed={40}
               />
             </h1>
-            <p className="mt-7 text-lg md:text-xl text-foreground/65 max-w-lg leading-relaxed">
-              Compute, storage, databases, email, SMS, WhatsApp, maps. Under one roof, billed in shillings. Stop juggling seven dashboards and seven invoices.
+            <p className="mt-7 text-lg md:text-xl text-foreground/70 max-w-lg leading-relaxed">
+              Buy traffic that <span className="font-serif-italic">converts.</span> Monetize traffic you <span className="font-serif-italic">own.</span>
+            </p>
+            <p className="mt-4 text-[15px] md:text-base text-foreground/60 max-w-lg leading-relaxed">
+              Push, native, popunder, and banner ads — self-serve for advertisers, instant payouts for publishers. Billed in shillings, paid via M-Pesa.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
-                href="https://console.savannahcloud.com"
+                href="https://console.otexads.com/signup?type=advertiser"
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-bold hover:opacity-90 transition"
               >
-                Open the console
+                Start advertising
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition" />
               </a>
-              <Link
-                to="/platform"
+              <a
+                href="https://console.otexads.com/signup?type=publisher"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border bg-background/60 font-semibold hover:bg-background transition"
               >
-                See the platform
-              </Link>
+                Monetize your site
+              </a>
             </div>
+            <a href="#how" className="mt-6 inline-block text-sm text-foreground/55 hover:text-foreground transition">
+              See how it works ↓
+            </a>
           </div>
-          <div className="relative aspect-[4/5] md:aspect-[4/5] rounded-3xl overflow-hidden border border-border/70 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]">
-            <img
-              src={cloudHero}
-              alt="Sunrise over a savannah sky"
-              className="absolute inset-0 w-full h-full object-cover drift-slow"
-              fetchPriority="high"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--ink)]/20 via-transparent to-[var(--sun)]/10" />
-          </div>
+          <HeroPanel />
         </div>
       </div>
     </section>
   );
 }
 
-function Glance() {
-  const items = [
-    { label: "Baobab", tag: "Storage", desc: "S3-compatible object storage. Buckets, signed URLs, fair egress.", icon: baobabIcon.url },
-    { label: "Mto", tag: "Database", desc: "Serverless SQL at the edge. Branching and point-in-time restore.", icon: mtoIcon.url },
-    { label: "Simba", tag: "Compute", desc: "Edge functions that run in milliseconds, close to your users.", icon: simbaIcon.url },
-    { label: "Tamtam", tag: "Messaging", desc: "SMS and WhatsApp through one API. Templates and delivery receipts.", icon: tamtamIcon.url },
-    { label: "Safari", tag: "Maps & Geo", desc: "Maps, geocoding, directions, places. One key, global coverage.", icon: safariIcon.url },
-    { label: "Twiga", tag: "Email", desc: "Transactional and marketing email that lands in the inbox.", icon: twigaIcon.url },
-  ] as const;
+function HeroPanel() {
+  return (
+    <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-border/70 bg-[var(--ink)] text-[var(--cream)] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)] p-6 md:p-8">
+      <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-[var(--cream)]/60">
+        <span>Live · Last 24h</span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--herb)] animate-pulse" /> Serving
+        </span>
+      </div>
+      <div className="mt-6">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-[var(--cream)]/50">Impressions</div>
+        <div className="mt-1 text-5xl md:text-6xl font-black tracking-[-0.04em] tabular-nums">4.82M</div>
+        <div className="mt-1 text-sm text-[var(--herb)]">▲ 12.4% vs. yesterday</div>
+      </div>
+      <div className="mt-8 grid grid-cols-2 gap-4">
+        <Stat label="CTR" value="1.84%" />
+        <Stat label="eCPM" value="KES 42" />
+        <Stat label="Conversions" value="2,391" />
+        <Stat label="Spend" value="KES 118k" />
+      </div>
+      <div className="mt-8 pt-6 border-t border-white/10">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-[var(--cream)]/50 mb-3">Next payout</div>
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="font-semibold">M-Pesa · +254 7•• ••• 421</div>
+            <div className="text-xs text-[var(--cream)]/50 mt-1">Weekly · Fri 09:00 EAT</div>
+          </div>
+          <div className="text-xl font-black tabular-nums">KES 24,180</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl bg-white/[0.04] border border-white/10 p-3">
+      <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--cream)]/45">{label}</div>
+      <div className="mt-1 text-lg font-bold tabular-nums">{value}</div>
+    </div>
+  );
+}
+
+function StatsBar() {
+  const stats = [
+    { n: "3,200+", l: "Publishers" },
+    { n: "47", l: "Countries" },
+    { n: "180M", l: "Impressions / day" },
+    { n: "KES 8.4M", l: "Paid out last month" },
+  ];
+  return (
+    <section className="mx-auto max-w-6xl px-6 pb-16">
+      <div className="rounded-2xl border border-border/70 bg-card grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-border/60 overflow-hidden">
+        {stats.map((s) => (
+          <div key={s.l} className="px-6 py-6 text-center">
+            <div className="text-2xl md:text-3xl font-black tracking-[-0.03em] tabular-nums">{s.n}</div>
+            <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-foreground/50">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Sides() {
+  const advertiser = [
+    "Self-serve campaign creation — no minimum spend, no account manager required",
+    "5 ad formats: Push, Native, Popunder, In-Page Push, Banner",
+    "Real-time stats, budget pacing, M-Pesa top-up",
+  ];
+  const publisher = [
+    "Monetize any site with one tag",
+    "Weekly M-Pesa payouts, KES 500 minimum threshold",
+    "Fraud-filtered traffic = advertisers stay, rates stay high",
+  ];
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <div className="text-center mb-12">
-        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-4">The Stack</div>
+      <div className="text-center mb-14">
+        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-4">Two sides, one network</div>
         <h2 className="text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black tracking-[-0.035em]">
-          One platform. <span className="font-serif-italic font-normal">Every primitive.</span>
+          Built for both ends of the <span className="font-serif-italic font-normal">exchange.</span>
+        </h2>
+      </div>
+      <div className="grid md:grid-cols-2 gap-5">
+        <SideCard
+          id="advertisers"
+          eyebrow="For Advertisers"
+          title={<>Launch a campaign in <span className="font-serif-italic font-normal">minutes,</span> not meetings</>}
+          bullets={advertiser}
+          cta={{ label: "Start advertising", href: "https://console.otexads.com/signup?type=advertiser" }}
+        />
+        <SideCard
+          id="publishers"
+          eyebrow="For Publishers"
+          title={<>Turn your traffic into <span className="font-serif-italic font-normal">shillings</span></>}
+          bullets={publisher}
+          cta={{ label: "Monetize your site", href: "https://console.otexads.com/signup?type=publisher" }}
+          tone="ink"
+        />
+      </div>
+    </section>
+  );
+}
+
+function SideCard({
+  id,
+  eyebrow,
+  title,
+  bullets,
+  cta,
+  tone = "cream",
+}: {
+  id: string;
+  eyebrow: string;
+  title: React.ReactNode;
+  bullets: string[];
+  cta: { label: string; href: string };
+  tone?: "cream" | "ink";
+}) {
+  const isInk = tone === "ink";
+  return (
+    <div
+      id={id}
+      className={`scroll-mt-24 rounded-3xl border p-8 md:p-10 ${
+        isInk
+          ? "bg-[var(--ink)] text-[var(--cream)] border-transparent"
+          : "bg-card border-border/70"
+      }`}
+    >
+      <div className={`text-[11px] uppercase tracking-[0.25em] mb-4 ${isInk ? "text-[var(--cream)]/55" : "text-foreground/45"}`}>
+        {eyebrow}
+      </div>
+      <h3 className="text-2xl md:text-3xl font-black tracking-[-0.035em] leading-[1.05]">{title}</h3>
+      <ul className="mt-7 space-y-3.5">
+        {bullets.map((b) => (
+          <li key={b} className="flex items-start gap-3 text-[15px] leading-relaxed">
+            <Check className={`h-4 w-4 mt-1 shrink-0 ${isInk ? "text-[var(--sun)]" : "text-[var(--herb)]"}`} />
+            <span className={isInk ? "text-[var(--cream)]/85" : "text-foreground/80"}>{b}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={cta.href}
+        className={`mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition ${
+          isInk
+            ? "bg-[var(--cream)] text-[var(--ink)] hover:opacity-90"
+            : "bg-foreground text-background hover:opacity-90"
+        }`}
+      >
+        {cta.label} <ArrowUpRight className="h-3.5 w-3.5" />
+      </a>
+    </div>
+  );
+}
+
+function HowItWorks() {
+  const [tab, setTab] = useState<"advertiser" | "publisher">("advertiser");
+  const advertiser = [
+    { t: "Sign up", d: "Create your OtexAds account. Campaign review typically completes within 24 hours." },
+    { t: "Set up", d: "Build your campaign, upload creatives, and pick targeting — countries, devices, categories." },
+    { t: "Start scaling", d: "Top up via M-Pesa. Real-time stats, budget pacing, and pause/resume in one click." },
+  ];
+  const publisher = [
+    { t: "Sign up", d: "Instant approval. Add your site and get access to your publisher dashboard." },
+    { t: "Set up", d: "Create a zone, drop one script tag, and pick your ad formats — push, native, popunder." },
+    { t: "Get paid", d: "Weekly M-Pesa payouts. KES 500 minimum. No net-30, no wire fees, no waiting." },
+  ];
+  const steps = tab === "advertiser" ? advertiser : publisher;
+
+  return (
+    <section id="how" className="mx-auto max-w-6xl px-6 py-24 scroll-mt-24">
+      <div className="text-center mb-10">
+        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-4">How it works</div>
+        <h2 className="text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black tracking-[-0.035em]">
+          Three steps. <span className="font-serif-italic font-normal">Either side.</span>
+        </h2>
+      </div>
+      <div className="flex justify-center mb-10">
+        <div className="inline-flex p-1 rounded-full border border-border/70 bg-card">
+          {(["advertiser", "publisher"] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className={`px-4 py-1.5 text-sm rounded-full font-semibold capitalize transition ${
+                tab === t ? "bg-foreground text-background" : "text-foreground/60 hover:text-foreground"
+              }`}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+      <ol className="grid md:grid-cols-3 gap-5">
+        {steps.map((s, i) => (
+          <li key={s.t} className="rounded-2xl border border-border/70 bg-card p-7">
+            <div className="flex items-center gap-3">
+              <div className="h-8 w-8 rounded-full bg-foreground text-background grid place-items-center text-sm font-black tabular-nums">
+                {i + 1}
+              </div>
+              <div className="text-lg font-black tracking-tight">{s.t}</div>
+            </div>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground/70">{s.d}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function Formats() {
+  const items = [
+    { icon: Bell, name: "Push", desc: "Native OS-style notifications that reach users even after they leave your site." },
+    { icon: LayoutGrid, name: "Native", desc: "In-feed placements that match the look and feel of surrounding content." },
+    { icon: Square, name: "Popunder", desc: "Full-page placements that open behind the current tab — high reach, low intrusion." },
+    { icon: MousePointerClick, name: "In-Page Push", desc: "Push-style widgets rendered inside the page. Works on iOS and every browser." },
+    { icon: Rows3, name: "Banner", desc: "Classic IAB display sizes — 300×250, 728×90, 320×50. Fast-loading, brand-safe." },
+  ];
+  return (
+    <section id="formats" className="mx-auto max-w-6xl px-6 py-24 scroll-mt-24">
+      <div className="text-center mb-12">
+        <div className="text-[11px] uppercase tracking-[0.28em] text-foreground/45 mb-4">Ad formats</div>
+        <h2 className="text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black tracking-[-0.035em]">
+          Five formats. <span className="font-serif-italic font-normal">One integration.</span>
         </h2>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
         {items.map((i) => (
-          <Link
-            key={i.label}
-            to="/platform"
-            className="bg-background p-8 hover:bg-card transition group"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-xl bg-foreground/[0.04] border border-border/60 grid place-items-center shrink-0">
-                  <img src={i.icon} alt="" className="h-7 w-7 object-contain" loading="lazy" />
-                </div>
-                <div>
-                  <div className="text-xl font-black tracking-tight">{i.label}</div>
-                  <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/45 mt-1">{i.tag}</div>
-                </div>
-              </div>
-              <ArrowUpRight className="h-4 w-4 text-foreground/40 group-hover:text-foreground group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition" />
+          <div key={i.name} className="bg-background p-7 hover:bg-card transition">
+            <div className="h-11 w-11 rounded-xl bg-foreground/[0.04] border border-border/60 grid place-items-center">
+              <i.icon className="h-5 w-5 text-foreground/75" strokeWidth={1.6} />
             </div>
-            <p className="mt-5 text-[15px] leading-relaxed text-foreground/70">{i.desc}</p>
-          </Link>
+            <div className="mt-5 text-xl font-black tracking-tight">{i.name}</div>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground/70">{i.desc}</p>
+          </div>
         ))}
       </div>
     </section>
@@ -329,17 +368,25 @@ function ClosingCTA() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-32 text-center">
       <h2 className="text-balance text-[clamp(2rem,5vw,3.5rem)] font-medium tracking-[-0.03em] leading-[1.05]">
-        Ship faster. <span className="font-serif-italic">Pay less.</span> Own more.
+        Ship campaigns. <span className="font-serif-italic">Grow revenue.</span> Get paid.
       </h2>
       <p className="mt-5 text-lg text-foreground/60">
-        Open the console and ship your first pipeline in minutes.
+        Whether you're spending or earning, OtexAds settles in shillings — straight to M-Pesa.
       </p>
-      <a
-        href="https://console.savannahcloud.com"
-        className="mt-9 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-medium hover:opacity-90 transition"
-      >
-        Open Console <ArrowUpRight className="h-4 w-4" />
-      </a>
+      <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="https://console.otexads.com/signup?type=advertiser"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-medium hover:opacity-90 transition"
+        >
+          Start advertising <ArrowUpRight className="h-4 w-4" />
+        </a>
+        <a
+          href="https://console.otexads.com/signup?type=publisher"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border font-medium hover:bg-card transition"
+        >
+          Monetize your site
+        </a>
+      </div>
     </section>
   );
 }
