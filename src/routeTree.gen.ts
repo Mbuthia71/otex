@@ -9,21 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WhyRouteImport } from './routes/why'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as PlatformRouteImport } from './routes/platform'
-import { Route as PipelinesRouteImport } from './routes/pipelines'
-import { Route as ImageSitemapDotxmlRouteImport } from './routes/image-sitemap[.]xml'
-import { Route as ConsolePreviewRouteImport } from './routes/console-preview'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
 
-const WhyRoute = WhyRouteImport.update({
-  id: '/why',
-  path: '/why',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -34,31 +23,6 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PlatformRoute = PlatformRouteImport.update({
-  id: '/platform',
-  path: '/platform',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PipelinesRoute = PipelinesRouteImport.update({
-  id: '/pipelines',
-  path: '/pipelines',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImageSitemapDotxmlRoute = ImageSitemapDotxmlRouteImport.update({
-  id: '/image-sitemap.xml',
-  path: '/image-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsolePreviewRoute = ConsolePreviewRouteImport.update({
-  id: '/console-preview',
-  path: '/console-preview',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -67,95 +31,36 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
-  '/console-preview': typeof ConsolePreviewRoute
-  '/image-sitemap.xml': typeof ImageSitemapDotxmlRoute
-  '/pipelines': typeof PipelinesRoute
-  '/platform': typeof PlatformRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/why': typeof WhyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
-  '/console-preview': typeof ConsolePreviewRoute
-  '/image-sitemap.xml': typeof ImageSitemapDotxmlRoute
-  '/pipelines': typeof PipelinesRoute
-  '/platform': typeof PlatformRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/why': typeof WhyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
-  '/console-preview': typeof ConsolePreviewRoute
-  '/image-sitemap.xml': typeof ImageSitemapDotxmlRoute
-  '/pipelines': typeof PipelinesRoute
-  '/platform': typeof PlatformRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/why': typeof WhyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/blog'
-    | '/console-preview'
-    | '/image-sitemap.xml'
-    | '/pipelines'
-    | '/platform'
-    | '/pricing'
-    | '/sitemap.xml'
-    | '/why'
+  fullPaths: '/' | '/pricing' | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/blog'
-    | '/console-preview'
-    | '/image-sitemap.xml'
-    | '/pipelines'
-    | '/platform'
-    | '/pricing'
-    | '/sitemap.xml'
-    | '/why'
-  id:
-    | '__root__'
-    | '/'
-    | '/blog'
-    | '/console-preview'
-    | '/image-sitemap.xml'
-    | '/pipelines'
-    | '/platform'
-    | '/pricing'
-    | '/sitemap.xml'
-    | '/why'
+  to: '/' | '/pricing' | '/sitemap.xml'
+  id: '__root__' | '/' | '/pricing' | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
-  ConsolePreviewRoute: typeof ConsolePreviewRoute
-  ImageSitemapDotxmlRoute: typeof ImageSitemapDotxmlRoute
-  PipelinesRoute: typeof PipelinesRoute
-  PlatformRoute: typeof PlatformRoute
   PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  WhyRoute: typeof WhyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/why': {
-      id: '/why'
-      path: '/why'
-      fullPath: '/why'
-      preLoaderRoute: typeof WhyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -170,41 +75,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/platform': {
-      id: '/platform'
-      path: '/platform'
-      fullPath: '/platform'
-      preLoaderRoute: typeof PlatformRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pipelines': {
-      id: '/pipelines'
-      path: '/pipelines'
-      fullPath: '/pipelines'
-      preLoaderRoute: typeof PipelinesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/image-sitemap.xml': {
-      id: '/image-sitemap.xml'
-      path: '/image-sitemap.xml'
-      fullPath: '/image-sitemap.xml'
-      preLoaderRoute: typeof ImageSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/console-preview': {
-      id: '/console-preview'
-      path: '/console-preview'
-      fullPath: '/console-preview'
-      preLoaderRoute: typeof ConsolePreviewRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -217,14 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
-  ConsolePreviewRoute: ConsolePreviewRoute,
-  ImageSitemapDotxmlRoute: ImageSitemapDotxmlRoute,
-  PipelinesRoute: PipelinesRoute,
-  PlatformRoute: PlatformRoute,
   PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  WhyRoute: WhyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
